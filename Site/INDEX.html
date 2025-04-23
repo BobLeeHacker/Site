@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <title>Educare - Clone</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+ 
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.11.3/font/bootstrap-icons.min.css">
+  <style>
+    :root {
+      --bege: #f7dfb2;
+      --marrom: #a84214;
+      --laranja: #fa9b3c;
+      --texto: #111111;
+      --cinza: #555;
+    }
+    body {
+      margin: 0; background: var(--bege);
+      font-family: Arial, Helvetica, sans-serif; color: var(--texto);
+    }
+    .navbar {
+      display: flex; justify-content: space-between; align-items: center;
+      background: var(--bege); padding: 22px 6vw; font-size: 16px;
+      flex-wrap: wrap;
+    }
+    .navbar .logo {
+      display: flex; align-items: center; font-family: serif;
+      font-size: 22px; font-weight: bold;
+    }
+    .navbar ul {
+      display: flex; gap: 2.3rem; list-style: none; margin: 0; padding: 0;
+    }
+    .navbar li a {
+      color: var(--texto); text-decoration: none;
+      transition: color 0.16s;
+    }
+    .navbar li a:hover { text-decoration: underline; color: var(--marrom); }
+    .navbar .arrow { margin-left: 3px; font-size: 14px; }
+    .navbar .btn-contact {
+      background: var(--marrom); color: #fff; border: none;
+      padding: 9px 22px; border-radius: 6px; font-weight: bold;
+      cursor: pointer; transition: filter 0.17s;
+    }
+    .navbar .btn-contact:hover { filter: brightness(1.13); }
+    .hero {
+      max-width: 1170px; margin: 0 auto; padding: 58px 6vw 40px 6vw;
+      display: flex; align-items: center; flex-wrap: wrap;
+      justify-content: space-between; background: #fff;
+    }
+    .hero-text { flex: 1; min-width: 260px; }
+    .hero-text h1 { font-size: 2.3rem; font-weight: bolder; margin: 0 0 16px 0; line-height: 1.15; }
+    .hero-text p { color: #666; margin-bottom: 18px; max-width: 420px; }
+    .hero-text .btn {
+      background: var(--marrom); color: #fff; border: none;
+      padding: 11px 34px; border-radius: 5px; font-size: 1rem; font-weight: 500;
+      cursor: pointer;
+    }
+    .hero-img { flex: 1; display: flex; justify-content: center; min-width: 240px; margin-top: 20px;}
+    .hero-img img { width: 300px; max-width: 100%; height: auto; border-radius: 7px; }
+    .welcome {
+      display: flex; flex-wrap: wrap; gap: 40px; align-items: center;
+      max-width: 1020px; margin: 50px auto 0 auto; padding: 0 6vw;
+    }
+    .welcome-img { flex-shrink: 0; width: 340px; max-width: 90%; border-radius: 16px; }
+    .welcome-img img {
+      width: 100%; height: 250px; object-fit: cover; border-radius: 14px;
+      box-shadow: 0 8px 26px #0001;
+    }
+    .welcome-content { flex: 1; }
+    .welcome-content h2 {
+      font-size: 2rem; margin: 0 0 13px 0; font-weight: bold;
+    }
+    .welcome-content ul { color: var(--cinza); margin: 0; padding: 0 0 0 12px; }
+    .welcome-content li { margin-bottom: 6px; }
+    .register-section { background: #fff; padding: 45px 4vw 25px 4vw; margin-top: 50px;}
+    .register-container {
+      max-width: 1020px; margin: 0 auto;
+      display: flex; flex-wrap: wrap; align-items: center; gap: 40px; justify-content: space-between;
+    }
+    .register-left { min-width: 240px; flex: 1;}
+    .register-left h2 { font-size: 2rem; margin: 0 0 13px 0; font-weight: bold; }
+    .register-img-box { display: flex; flex: 1; justify-content: center; }
+    .register-img {
+      width: 220px; height: 125px; object-fit: cover; border-radius: 10px;
+      box-shadow: 0 0 10px #0001; margin-bottom: 16px; background: #fdeeea;
+    }
+    .register-form {
+      display: flex; flex-wrap: wrap; background: var(--bege);
+      gap: 8px; padding: 18px; max-width: 640px; margin: 26px auto 0 auto;
+      border-radius: 8px;
+      justify-content: center; align-items: center;
+    }
+    .register-form input[type="text"],.register-form input[type="email"] {
+      padding: 11px 13px; border-radius: 5px; border: 1px solid #ccc; font-size: 1rem;
+      margin-right: 8px; flex: 1 1 150px; min-width: 140px;
+      outline: none; margin-bottom: 7px;
+    }
+    .register-form button {
+      background: var(--marrom); color: #fff; border: none;
+      border-radius: 5px; padding: 11px 37px;
+      font-weight: bold; cursor: pointer; font-size: 1rem;
+      margin-bottom: 7px;
+    }
+    .community-section {
+      background: #fff; padding: 46px 4vw 70px 4vw; text-align: center;
+    }
+    .community-section h2 { font-size: 2rem; margin-bottom: 7px; font-weight: bold; }
+    .community-section p { color: #555; margin-bottom: 20px; }
+    .community-section .join-btn {
+      background: var(--laranja); color: #fff; border: none;
+      padding: 11px 40px; border-radius: 7px; font-size: 1rem; font-weight: 500;
+      margin-bottom: 34px; cursor: pointer;
+    }
+    .comm-box {
+      margin: 0 auto; max-width: 400px; position: relative; display: flex; justify-content: center;
+    }
+    .comm-main-img {
+      width: 220px; height: 232px; border-radius: 13px; box-shadow: 0 8px 32px #e16d210a;
+      object-fit: cover; z-index: 2; background: #eee;
+    }
+    .comm-avatar {
+      width: 45px; height: 45px; border-radius: 50%; object-fit: cover;
+      position: absolute; border: 4px solid #fff; box-shadow: 0 2px 8px #0001;
+      z-index: 3;
+    }
+    .comm-avatar.a1 { top: 30px; left: 0px; }
+    .comm-avatar.a2 { top: 30px; right: 0px; }
+    .comm-avatar.a3 { bottom: 6px; left: 65%; }
+    .comm-avatar.a4 { bottom: 6px; right: 65%; }
+    footer { background: var(--bege); padding: 42px 10vw; color: #232323; }
+    .footer-container {
+      max-width: 1020px; margin: 0 auto; display: flex; flex-wrap: wrap;
+      justify-content: space-between; gap: 40px;
+    }
+    .footer-logo { display: flex; align-items: center; font-family: serif; gap: 9px; }
+    .footer-logo span { font-size: 21px; font-weight: bold; }
+    .footer-copy { font-size: 13px; color: #686868; margin-top: 5px; }
+    .footer-block { min-width: 150px; }
+    .footer-title { font-weight: bold; margin-bottom: 8px; }
+    .social-links { display: flex; gap: 10px; }
+    .social-links a {color: #111; font-size: 1.5rem;}
+    .footer-links a { display: block; color: #686868; text-decoration: none; font-size: 14px; margin-bottom: 5px;}
+    .footer-links a:hover { text-decoration: underline; color: #a84214; }
+    .footer-contact span { display: block; font-size: 14px; color: #686868; margin-bottom: 4px;}
+    @media (max-width: 1000px) {
+      .navbar, .hero, .welcome, .register-container, .footer-container { flex-direction: column; gap: 24px; align-items: flex-start;}
+      .hero, .register-container, .footer-container { align-items: center;}
+      .comm-avatar.a3, .comm-avatar.a4 { left: 0; right: auto;}
+    }
+    @media (max-width: 600px) {
+      .navbar { padding: 18px 3vw; flex-direction: column; align-items: flex-start; }
+      .hero, .welcome, .register-container, .footer-container { padding-left: 5vw; padding-right: 5vw }
+      .footer-container { gap: 15px;}
+      .register-img { width: 90vw; }
+      .comm-box {max-width:95vw;}
+      .hero-img img { width: 100%;}
+      .welcome-img img { height: 169px;}
+      .comm-main-img { height: 136px; }
+    }
+  </style>
+</head>
+<body>
+  <!-- NAVBAR -->
+  <nav class="navbar">
+    <div class="logo"><span>🎓</span> Educare</div>
+    <ul>
+      <li><a href="#">Home</a></li>
+      <li><a href="#">About</a></li>
+      <li><a href="#">Courses <span class="arrow">▼</span></a></li>
+      <li><a href="#">Blog <span class="arrow">▼</span></a></li>
+    </ul>
+    <button class="btn-contact">Contact us</button>
+  </nav>
+
+  <!-- HERO SECTION -->
+  <section class="hero">
+    <div class="hero-text">
+      <h1>Start learning<br>with us now</h1>
+      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsa laboriosam voluptates sed beatae?</p>
+      <button class="btn">Start learning</button>
+    </div>
+    <div class="hero-img">
+      
+      <img src="imagem1.jpg" alt="Estudo e Ideias">
+    </div>
+  </section>
+
+  
+  <section class="welcome">
+    <div class="welcome-img">
+      
+      <img src="imagem3.png" alt="Pessoa estudando">
+    </div>
+    <div class="welcome-content">
+      <h2>Welcome to the<br>online centers</h2>
+      <ul>
+        <li>Start learning from your experience</li>
+        <li>Enhance your skills with us now</li>
+        <li>Do your favorite course</li>
+      </ul>
+    </div>
+  </section>
+
+  
+  <section class="register-section">
+    <div class="register-container">
+      <div class="register-left">
+        <h2>Start learning by<br>creating free account<br>and get register</h2>
+      </div>
+      <div class="register-img-box">
+        
+        <img class="register-img" src="imagem2.png" alt="Estudante lendo">
+      </div>
+    </div>
+    <form class="register-form">
+      <input type="text" placeholder="Your name" required>
+      <input type="email" placeholder="Your email address" required>
+      <button type="submit">Subscribe</button>
+    </form>
+  </section>
+
+  <section class="community-section">
+    <h2>Start growing with<br>our community</h2>
+    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit</p>
+    <button class="join-btn">Join community</button>
+    <div class="comm-box" style="margin-top:24px;">
+      
+      <img class="comm-main-img" src="imagem4.png" alt="Pessoa estudante">
+      
+      <img class="comm-avatar a1" src="teacher-1.jpg" alt="Avatar 1">
+      <img class="comm-avatar a2" src="teacher-2.jpg" alt="Avatar 2">
+      <img class="comm-avatar a3" src="teacher-3.jpg" alt="Avatar 3">
+      <img class="comm-avatar a4" src="teacher-4.jpg" alt="Avatar 4">
+    </div>
+  </section>
+
+  
+  <footer>
+    <div class="footer-container">
+      <div>
+        <div class="footer-logo"><span>🎓</span> Educare</div>
+        <div class="footer-copy">© All copyrights reserved</div>
+      </div>
+      <div class="footer-block">
+        <div class="footer-title">Follow us</div>
+        <div class="social-links">
+          <a href="#" aria-label="Facebook"><i class="bi bi-facebook"></i></a>
+          <a href="#" aria-label="Twitter"><i class="bi bi-twitter"></i></a>
+          <a href="#" aria-label="Instagram"><i class="bi bi-instagram"></i></a>
+          <a href="#" aria-label="LinkedIn"><i class="bi bi-linkedin"></i></a>
+        </div>
+      </div>
+      <div class="footer-block footer-links">
+        <div class="footer-title">Useful Links</div>
+        <a href="#">Our Projects</a>
+        <a href="#">FAQ's</a>
+        <a href="#">News and Updates</a>
+      </div>
+      <div class="footer-block footer-contact">
+        <div class="footer-title">Contacts</div>
+        <span>Address: 4-5 Main road, Delhi</span>
+        <span>Email: educare@gmail.com</span>
+        <span>Phone Number: +91 4534332365</span>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>
